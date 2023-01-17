@@ -1,0 +1,71 @@
+<template>
+    <template if:true={loader}>
+        <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+    </template>
+    <div class="c-container">
+        <div align ="right"><button class="slds-button slds-button_brand button" >+ New Audit</button>
+        </div>
+        <h3 class="slds-section__title" style="font-size: 35px;font-weight:bold;padding:15px;">
+    
+            My Current Audits
+    
+        </h3>
+       <lightning-tabset variant="scoped">
+            <lightning-tab label="ICCU Audits" >
+                <div class="slds-box slds-theme_default">
+                   test
+</div>
+            </lightning-tab>
+            <lightning-tab label="Investors Reviews">
+           tyyu  <div if:true={accounts}>
+            <lightning-datatable data={accounts} 
+                                 columns={columns} 
+                                 key-field={accounts.id}></lightning-datatable>
+        </div>
+            </lightning-tab>
+            <lightning-tab label="Outsourced Audits">
+                <div if:true={Account.data}>
+                    <lightning-datatable data={Account.data} 
+                                         columns={columns} 
+                                         key-field="id"></lightning-datatable>
+                </div>
+            </lightning-tab>
+            <lightning-tab label="Buy Backs">
+                <div if:true={Account.data}>
+                    <lightning-datatable data={Account.data} 
+                                         columns={columns} 
+                                         key-field="id"></lightning-datatable>
+                </div>
+            </lightning-tab>
+        </lightning-tabset>
+        <template if:true={isDisplayNoRecords}>
+            <div class="slds-align_absolute-center">
+                <br/>
+                No records found
+            </div>
+        </template>
+        <div class="slds-align_absolute-center"> 
+            <div class="slds-p-right_xx-small">
+                     
+                <lightning-button label="Prev"
+                disabled={isPrev} onclick={handlePrev}
+                                    variant="brand"
+                                    icon-name="utility:back"
+                                    name="prev"></lightning-button>  
+            </div>
+            <span class="slds-badge slds-badge_lightest">
+                {recordStart}-{recordEnd} of {totalRecords} | Page {pageNumber} of {totalPages}
+            </span>
+            <div class="slds-p-left_xx-small">
+                <lightning-button label="Next"
+                disabled={isNext} onclick={handleNext}
+                                    variant="brand"
+                                    icon-name="utility:forward"
+                                    icon-position="right"
+                                    name="next"></lightning-button>
+            </div>
+        </div>
+   
+      
+        </div>
+</template>

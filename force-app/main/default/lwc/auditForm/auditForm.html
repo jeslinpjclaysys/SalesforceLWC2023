@@ -1,0 +1,159 @@
+<template>
+    <div class="c-container">
+    <h3 class="slds-section__title" style="font-size: 35px;font-weight:bold;padding:15px;">
+
+        New Audit 
+
+    </h3>
+    <br/>
+  
+    <lightning-layout > 
+    <lightning-layout-item>
+
+        <select class="slds-select" name = "optionSelect" onchange={changeHandler} >
+            <option value="appId">APP ID</option>
+            <option value="LoanId">Loan #</option>
+        </select> 
+   
+    </lightning-layout-item>
+   
+   <lightning-layout-item flexibility="auto">
+    
+    <div onkeyup={handleKeyUp} class="slds-size_2-of-3 slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+        <lightning-icon onclick={handleClick} size="x-small" class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default" icon-name="utility:search"></lightning-icon>
+        <input type="text" data-id="site-id" id="searchTxt" placeholder="Placeholder" class="slds-input" />
+   
+    
+  </div>   <!--   <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+            <lightning-icon onclick={handleClick} size="x-small" class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default" icon-name="utility:search"></lightning-icon>
+            <input type="text" id="text-input-id-1" placeholder="Type Text to Search" class="slds-input" />
+        </div>-->
+    
+    
+   </lightning-layout-item>
+     
+               
+     
+</lightning-layout>
+<br/>
+<!--<div if:true={searchData}>
+    <lightning-datatable data={searchData} 
+                         columns={columns} 
+                         key-field="id"></lightning-datatable>
+</div>-->
+<!-- <template if:true={filesList} for:each={filesList} for:item="keyValue">
+{KeyValue.Name}
+</template> -->
+
+   <div if:false={searchData}>
+    No data</div>
+<div if:true={searchData} class="c-container">
+    <template for:each={searchData} for:item="acc">
+        <span key={acc.id}>
+   
+
+    <lightning-layout multiple-rows="true" style="width: 50%;">
+
+        <lightning-layout-item class="slds-p-around_xx-small" size="12">
+
+          <lightning-layout>
+
+           
+
+              <lightning-layout-item class="slds-p-around_xx-small" size=6>
+
+                <div class="slds-text-heading_medium">
+
+                    <b>App ID: </b>
+
+                    <span>{acc.Phone}</span>
+
+                </div>
+
+                <div class="slds-text-heading_medium">
+
+                    <span style="font-weight:bold;"  >Loan #:</span>
+
+                    <span>{acc.Phone}</span>
+
+                </div>
+
+                <div class="slds-text-heading_medium">
+
+                    <span style="font-weight:bold;" >Collateral Info: </span>
+
+                    <p>{acc.Industry}</p>
+
+                </div>
+
+              </lightning-layout-item>
+
+           
+
+              <lightning-layout-item class="slds-p-around_xx-small" size=6>
+
+                <div class="slds-text-heading_medium">
+
+                    <span style="font-weight:bold;">Member #: </span>
+
+                    <span>{acc.Phone}</span>
+
+                </div>
+
+                <div class="slds-text-heading_medium">
+
+                    <span style="font-weight:bold;"  >Name: </span>
+
+                    <span>{acc.Name}</span>
+
+                </div>
+
+                <div class="slds-text-heading_medium">
+
+                    <span style="font-weight:bold;"  >Product: </span>
+
+                    <span>{acc.Type}</span>
+
+                </div>
+
+              
+
+              </lightning-layout-item>
+
+           
+
+          </lightning-layout>
+
+        </lightning-layout-item>
+
+      </lightning-layout>
+      <div class="c-container">
+        <div style="margin-left:3%;" class="slds-text-heading_medium" >
+            <template for:each={options} for:item="item">
+                <fieldset key={item.value} style="display: block; float: left;">
+                    <div class="slds-form-element__control" style="padding: 50px;" >
+                        <span class="slds-radio">
+                            <input name="radiogroup" id={item.value} type="radio" value={item.value} onchange={changeHandler}/>
+                            <label class="slds-radio__label" for={item.value}>
+                                <span class="slds-radio_faux"></span>
+                                <span class="slds-form-element__label" style="font-size: larger;">{item.label}</span>
+                            </label>
+                        </span>
+                    </div>
+                </fieldset>
+            </template><br/><br/>
+
+            <div if:true={selectedOption}>
+                Selected Vlaue: <b>{selectedOption}</b>
+            </div>
+        </div>
+
+</div>
+
+<div align ="right"><button class="slds-button slds-button_brand button" >Create Audit</button>
+</div>
+</span>
+</template>
+</div>
+</div>
+</template>

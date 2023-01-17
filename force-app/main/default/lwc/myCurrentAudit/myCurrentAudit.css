@@ -1,0 +1,31 @@
+.c-container {
+   
+    margin: 10px 0 20px 0;
+    padding: 1rem;
+    background-color:rgb(242, 240, 240);
+}
+
+.custom-box {
+    text-align: left;
+
+    padding: 1rem;
+   
+}
+.main{
+    padding: 1rem; 
+}
+.button {
+    background-color: #abaeab; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight:bold
+  }
+  .slds-input-has-icon .slds-input__icon:not(button) {
+    pointer-events: all;
+    cursor: pointer;
+}
